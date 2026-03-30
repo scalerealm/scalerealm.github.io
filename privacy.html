@@ -7,59 +7,85 @@
     <title>Privacy Policy | Scale Realm Ltd</title>
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-color: #1c1c1e;
-            --secondary-text: #6c6c70;
-            --border-color: #e5e5ea;
-            --accent-color: #007aff;
-            --corporate-blue: #002B5B;
+            --bg-color: #FFFFFF;
+            --secondary-bg: #F8FAFC;
+            --text-color: #0F172A;
+            --secondary-text: #475569;
+            --border-color: #E2E8F0;
+            --accent-color: #007AFF;
+            --glass-blue: rgba(187, 224, 242, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.2s ease-in-out;
         }
 
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-color);
             background-color: var(--bg-color);
-            max-width: 760px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
             -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2 { font-weight: 600; letter-spacing: -0.02em; }
-        h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-        h2 { font-size: 1.25rem; margin-top: 2rem; }
-        
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text-color);
+        }
+
+        h1 { font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 1.5rem; }
+        h2 { font-size: 1.5rem; margin-top: 3rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.5rem; }
+
         .nav-link {
             display: inline-block;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
         a { color: var(--accent-color); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
+        /* Accessibility: Clear Focus States */
+        a:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
         .policy-content {
             padding-bottom: 3rem;
             border-bottom: 1px solid var(--border-color);
+            position: relative;
         }
 
-        ul { padding-left: 1.5rem; }
-        li { margin-bottom: 0.5rem; }
+        ul { padding-left: 1.5rem; margin: 1.5rem 0; }
+        li { margin-bottom: 0.75rem; }
 
         footer {
-            padding: 3rem 0;
-            font-size: 0.875rem;
+            padding: 4rem 0;
+            font-size: 0.9rem;
             color: var(--secondary-text);
         }
 
         .legal-block {
-            margin-top: 1rem;
+            margin-top: 2rem;
             font-size: 0.8rem;
+            line-height: 1.6;
+            background: var(--secondary-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
         }
 
         .footer-links {
-            margin-top: 1.5rem;
+            margin-top: 2rem;
             font-weight: 500;
         }
     </style>
@@ -72,26 +98,38 @@
 
     <div class="policy-content">
         <h1>Privacy Policy</h1>
-        <p><strong>Effective Date: 9 March 2026</strong></p>
+        <p><strong>Last Updated: 30 March 2026</strong></p>
         
-        <p>Scale Realm Ltd ("we", "us", or "our") is committed to absolute data privacy. This policy applies to our website (scalerealm.co.uk) and our software products, including the Cuppa mobile application.</p>
+        <p>Scale Realm Ltd ("we", "us", or "our") is committed to absolute data privacy. This policy applies to our website (scalerealm.co.uk) and our software products, including the Cuppa application.</p>
         
-        <h2>1. The Cuppa Application (Local-First)</h2>
-        <p>Cuppa is built on a strict "Local-First" architecture.</p>
+        <h2>The Cuppa Application</h2>
+        <h3>1. Local-First</h3>
+        <p>Cuppa is designed with your privacy as the foundational feature. We have built Cuppa on a strict "Local-First" architecture. This means your financial data stays exactly where it belongs: in your hands.</p>
+        <p>Cuppa’s core functionality relies on processing data directly on your device.</p>
         <ul>
-            <li><strong>No Data Collection:</strong> We do not collect, transmit, store, or share your personal data, financial inputs, or simulation outputs.</li>
-            <li><strong>On-Device Processing:</strong> All calculations and retirement projections occur entirely on your local device hardware.</li>
-            <li><strong>No Telemetry:</strong> The app contains no third-party behavioral analytics or tracking SDKs. Crash reporting is completely opt-in and must be manually sent by the user via email.</li>
+            <li><strong>Your Data Stays on Your Device:</strong> To generate accurate financial simulations, you will need to input financial data. This information, along with your simulation outputs, is saved strictly to your device's local storage so you do not have to re-enter it each time you open the app.</li>
+            <li><strong>Zero External Data Collection:</strong> We (the developers) do not collect, transmit, view, or store your personal financial data on any external servers. Your data never leaves your device.</li>
+            <li><strong>On-Device Processing:</strong> All calculations and financial projections occur entirely on your local device hardware.</li>
+            <li><strong>No Telemetry:</strong> The app contains no third-party behavioural analytics or tracking SDKs. Crash reporting is completely opt-in and must be manually sent by you via email.</li>
         </ul>
+        <h3>2. Subscriptions and In-App Purchases</h3>
+        <p>To securely manage in-app purchases and subscriptions, Cuppa uses a trusted third-party service called RevenueCat.</p>
+        <ul>
+            <li><strong>Anonymous Purchase Validation:</strong> When you make a purchase, the app communicates with RevenueCat to validate the digital receipt provided by your app store (Apple App Store or Google Play). This communication relies on a randomly generated, anonymous App User ID.</li>
+            <li><strong>Strict Data Separation:</strong> RevenueCat only processes your purchase history, subscription status, and anonymous ID. It is completely isolated from your local app data. RevenueCat does not have access to, and cannot read, your financial simulations or any financial figures you input into Cuppa.</li>
+            <li><strong>Secure Payment Processing:</strong> Your actual payment information (such as credit card details) is handled entirely by Apple or Google. Neither Cuppa nor RevenueCat ever sees, collects, or stores your underlying payment methods.</li>
+        </ul>
+        <h3>3. Device Backups</h3>
+        <p>While Cuppa does not transmit your data to our servers, your mobile operating system (iOS or Android) may automatically back up your device's local app data to your personal cloud account (e.g., iCloud or Google Drive) depending on your device settings. You can manage or disable these device-level backups within your phone's system settings.</p>
 
-        <h2>2. Website & Corporate Data</h2>
+        <h2>Website & Corporate Data</h2>
         <ul>
             <li><strong>Website Tracking:</strong> Our website is a static page. We do not use cookies, tracking pixels, or visitor analytics.</li>
             <li><strong>Support Communications:</strong> If you contact us via email for support, we use your email address and any provided diagnostic data solely to resolve your issue. We do not add you to marketing lists or share your contact information with third parties.</li>
         </ul>
 
-        <h2>3. Contact Us</h2>
-        <p>For any privacy-related questions or data deletion requests regarding your email communications, please contact us at: <a href="mailto:info@scalerealm.co.uk">info@scalerealm.co.uk</a>.</p>
+        <h2>Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy, or if you choose to manually submit a crash report, please contact us at: <a href="mailto:info@scalerealm.co.uk">info@scalerealm.co.uk</a>.</p>
     </div>
 
    <footer>

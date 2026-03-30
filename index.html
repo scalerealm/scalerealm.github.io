@@ -7,32 +7,40 @@
     <link rel="icon" href="scale_realm_logo.svg" type="image/svg+xml">
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-color: #1c1c1e;
-            --secondary-text: #6c6c70;
-            --border-color: #e5e5ea;
-            --accent-color: #007aff;
-            --corporate-blue: #002B5B;
+            --bg-color: #FFFFFF;
+            --secondary-bg: #F8FAFC;
+            --text-color: #0F172A;
+            --secondary-text: #475569;
+            --border-color: #E2E8F0;
+            --accent-color: #007AFF; /* Accessible blue */
+            --glass-blue: rgba(187, 224, 242, 0.4); /* Cinnamoroll Blue with transparency */
+            --glass-border: rgba(255, 255, 255, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.2s ease-in-out;
         }
 
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-color);
             background-color: var(--bg-color);
-            max-width: 760px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 2rem;
             -webkit-font-smoothing: antialiased;
         }
 
         h1, h2, h3 {
-            font-weight: 600;
-            letter-spacing: -0.02em;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text-color);
         }
 
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        h2 { font-size: 1.5rem; margin-top: 0; }
+        h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; margin-top: 0; }
         
         .subtitle {
             font-size: 1.25rem;
@@ -40,53 +48,102 @@
             margin-bottom: 2rem;
         }
 
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 4rem 1rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
         section {
             padding: 3rem 0;
-            border-bottom: 1px solid var(--border-color);
         }
 
         .product-card {
-            background: #fbfbfd;
+            background: var(--secondary-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 1rem;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
         }
+
+        .product-card::before {
+            content: "";
+            position: absolute;
+            top: 0; right: 0;
+            width: 150px; height: 150px;
+            background: var(--glass-blue);
+            filter: blur(50px);
+            border-radius: 50%;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .product-card > * { position: relative; z-index: 1; }
+
+        ul { padding-left: 1.25rem; margin: 1.5rem 0; }
+        li { margin-bottom: 0.75rem; }
 
         a {
             color: var(--accent-color);
             text-decoration: none;
+            font-weight: 500;
         }
 
         a:hover {
             text-decoration: underline;
         }
 
+        /* Accessibility: Clear Focus States */
+        a:focus-visible, .button:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
         .button {
             display: inline-block;
             background-color: var(--text-color);
-            color: var(--bg-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-weight: 500;
-            margin-top: 1rem;
-            transition: opacity 0.2s;
+            color: #FFFFFF;
+            padding: 0.875rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
         }
 
         .button:hover {
-            opacity: 0.8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(15, 23, 42, 0.15);
             text-decoration: none;
+            opacity: 0.9;
+        }
+
+        .button:active {
+            transform: translateY(0);
         }
 
         footer {
-            padding: 3rem 0;
-            font-size: 0.875rem;
+            padding: 4rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
             color: var(--secondary-text);
         }
 
+        .footer-links {
+            margin: 1.5rem 0;
+        }
+
         .legal-block {
-            margin-top: 1rem;
+            margin-top: 2rem;
             font-size: 0.8rem;
+            line-height: 1.6;
+            background: var(--secondary-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
         }
     </style>
 </head>
@@ -102,10 +159,15 @@
         <h2>Our Products</h2>
         <div class="product-card">
             <h3>Cuppa</h3>
-            <p>Cuppa is a simulation tool designed to help UK residents explore retirement scenarios and strategies.</p>
-            <p>Built with a strict "Local-First" architecture, Cuppa ensures your financial data never leaves your device.</p>
+            <p>Cuppa is a high-fidelity, tax-aware simulation engine, built for UK residents to project their wealth journey and test financial “What Ifs”:</p>
+            <ul>
+                <li><b>Reality</b>: Fully tax-aware, allowance-aware, and inflation-adjusted.</li>
+                <li><b>Clarity</b>: Visualise your lifelong financial journey with detailed year-by-year cash flow.</li>
+                <li><b>Control</b>: Test 'What Ifs' using life events and different drawdown strategies.</li>
+                <li><b>Privacy</b>: Built with a strict "Local-First" mindset, your financial data never leaves your device.</li>
+            </ul>
             <p style="font-size: 0.85rem; color: var(--secondary-text); font-style: italic;">
-                Note: Cuppa is an educational simulation tool. It provides general financial guidance, not regulated financial advice.
+                Note: Cuppa is a simulation engine for illustrative and educational purposes. It provides general financial guidance, not regulated financial advice.
             </p>
             <a href="#" class="button">Coming soon to the App Store</a>
         </div>
